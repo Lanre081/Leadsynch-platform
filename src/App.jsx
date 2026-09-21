@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
+import LandingPage from './pages/LandingPage'
 import Login from './pages/Login'
 import ProtectedRoute from './components/ProtectedRoute'
 import DashboardLayout from './components/DashboardLayout'
@@ -27,8 +28,11 @@ function App() {
           <Route path="widgets/:id" element={<WidgetDetail />} />
         </Route>
 
-        {/* Redirect root to dashboard */}
-        <Route path="*" element={<Navigate to="/dashboard" replace />} />
+        {/* Public Routes */}
+        <Route path="/" element={<LandingPage />} />
+
+        {/* Redirect unknown routes to root */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </AuthProvider>
   )
